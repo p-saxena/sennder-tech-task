@@ -1,0 +1,28 @@
+{
+	"name": "sennder-tech-task",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"test": "./node_modules/.bin/wdio wdio.conf.js"
+	},
+	"dependencies": {
+		"@babel/cli": "^7.8.4",
+		"@babel/core": "^7.9.6",
+		"@babel/preset-env": "^7.9.6",
+		"@babel/register": "^7.9.0",
+		"@wdio/cli": "^6.1.12",
+		"@wdio/selenium-standalone-service": "^6.1.13",
+		"chai": "^4.2.0",
+		"core-js": "^3.6.5",
+		"webdriverio": "^6.1.12"
+	},
+	"devDependencies": {
+		"@wdio/local-runner": "^6.1.12",
+		"@wdio/mocha-framework": "^6.1.8",
+		"@wdio/spec-reporter": "^6.1.12",
+		"@wdio/sync": "^6.1.8",
+		"chromedriver": "^83.0.0",
+		"wdio-chromedriver-service": "^6.0.3"
+	}
+}
