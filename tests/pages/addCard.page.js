@@ -37,6 +37,25 @@ class AddCardPage extends Page {
 			'#wrapper div div:nth-child(2) div:nth-child(2) div:nth-child(2) div:nth-child(1) p'
 		)
 	}
+	get likeButtonForWentWellCard() {
+		return $(
+			'#wrapper div div:nth-child(2) div div .card-deck .card div .card-body div:nth-child(3) ul li:nth-child(3) button'
+		)
+	}
+	get deleteButtonForDidntGoWellCard() {
+		return $(
+			'#wrapper div div:nth-child(2) div:nth-child(2) div:nth-child(2) div:nth-child(1) div:nth-child(2) div:nth-child(3) ul li:nth-child(2) button'
+		)
+	}
+	get deleteModalTitle() {
+		return $('.modal-title.h4')
+	}
+	get deleteModalDescriptionText() {
+		return $('.modal-body p')
+	}
+	get confirmButtonOnDeleteModal() {
+		return $('.modal-footer button')
+	}
 
 	addWentWellCard(title, description) {
 		this.addCardTitleField.setValue(title)
