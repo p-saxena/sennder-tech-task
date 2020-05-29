@@ -214,12 +214,14 @@ exports.config = {
 	 * Function to be executed after a test (in Mocha/Jasmine).
 	 */
 	afterTest: function (test) {
-		// get current test title and clean it, to use it as file name
-		let filename = encodeURIComponent(test.title.replace(/\s+/g, '-'))
-		// build file path
-		let filePath = `${errorShotDir}${filename}.png`
-		// save screenshot
-		browser.saveScreenshot(filePath)
+		if (!test.passed) {
+			// get current test title and clean it, to use it as file name
+			let filename = encodeURIComponent(test.title.replace(/\s+/g, '-'))
+			// build file path
+			let filePath = `${errorShotDir}${filename}.png`
+			// save screenshot
+			browser.saveScreenshot(filePath)
+		}
 	},
 	/**
 	 * Hook that gets executed after the suite has ended
