@@ -1,4 +1,5 @@
 import addCardPage from '../pages/addCard.page'
+import { BoardPageStrings } from '../helper/constants'
 
 describe('Retrospective cards,', () => {
 	it('should show green and red buttons to add cards', () => {
@@ -9,7 +10,9 @@ describe('Retrospective cards,', () => {
 		it('should open add a card modal on clicking green button', () => {
 			addCardPage.addWentWellCardButton.click()
 			addCardPage.addCardModalTitle.waitForDisplayed()
-			expect(addCardPage.addCardModalTitle.getText()).to.equal('Add a Card')
+			expect(addCardPage.addCardModalTitle.getText()).to.equal(
+				BoardPageStrings.addCardModalTitle
+			)
 		})
 		it('should show title and description field on add a card modal', () => {
 			addCardPage.addCardTitleField.waitForDisplayed()
@@ -17,14 +20,14 @@ describe('Retrospective cards,', () => {
 		})
 		it('should be able to submit what went well card', () => {
 			addCardPage.addWentWellCard(
-				'Goal was achieved',
-				'Sprint was well planned'
+				BoardPageStrings.wentWellCardTitle,
+				BoardPageStrings.wentWellCardDescription
 			)
 			expect(addCardPage.wentWellCardTitle.getText()).to.equal(
-				'Goal was achieved'
+				BoardPageStrings.wentWellCardTitle
 			)
 			expect(addCardPage.wentWellCardDescription.getText()).to.equal(
-				'Sprint was well planned'
+				BoardPageStrings.wentWellCardDescription
 			)
 		})
 	})
@@ -32,19 +35,21 @@ describe('Retrospective cards,', () => {
 		it('should open add a card modal on clicking red button', () => {
 			addCardPage.addDidntGoWellCardButton.click()
 			addCardPage.addCardModalTitle.waitForDisplayed()
-			expect(addCardPage.addCardModalTitle.getText()).to.equal('Add a Card')
+			expect(addCardPage.addCardModalTitle.getText()).to.equal(
+				BoardPageStrings.addCardModalTitle
+			)
 		})
 		it('should show title and description field on add a card modal', () => {
 			addCardPage.addCardTitleField.waitForDisplayed()
 			addCardPage.addCardDescriptionField.waitForDisplayed()
 		})
 		it('should be able to submit what didnt go well card', () => {
-			addCardPage.addDidntGoWellCard('Goal was not achieved')
+			addCardPage.addDidntGoWellCard(BoardPageStrings.didntGoWellCardTitle)
 			expect(addCardPage.didntGoWellCardTitle.getText()).to.equal(
-				'Goal was not achieved'
+				BoardPageStrings.didntGoWellCardTitle
 			)
 			expect(addCardPage.didntGoWellCardDescription.getText()).to.equal(
-				'No description provided.'
+				BoardPageStrings.didntGoWellCardDescription
 			)
 		})
 	})

@@ -1,4 +1,5 @@
 import CreateBoardPage from '../pages/createBoard.page'
+import { CreateBoardPageStrings, BoardPageStrings } from '../helper/constants'
 
 describe('Create Board Page,', () => {
 	it('should show mandatory fields', () => {
@@ -6,10 +7,10 @@ describe('Create Board Page,', () => {
 		CreateBoardPage.selectOwnerDropdown.waitForDisplayed()
 	})
 	it('should submit board details', () => {
-		CreateBoardPage.fillBoardDetails('test123')
+		CreateBoardPage.fillBoardDetails(CreateBoardPageStrings.sessionName)
 		expect(CreateBoardPage.confirmationMessage.waitForDisplayed()).to.equal(
 			true
 		)
-		expect(browser.getUrl()).to.include('https://sprintboards.io/boards')
+		expect(browser.getUrl()).to.include(BoardPageStrings.boardUrl)
 	})
 })

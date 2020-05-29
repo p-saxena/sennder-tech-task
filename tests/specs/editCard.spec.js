@@ -1,4 +1,5 @@
 import addCardPage from '../pages/addCard.page'
+import { BoardPageStrings } from '../helper/constants'
 
 describe('Like button,', () => {
 	it('should be visible', () => {
@@ -26,9 +27,11 @@ describe('Delete button,', () => {
 		addCardPage.deleteModalTitle.waitForDisplayed()
 	})
 	it('should show correct text on modal', () => {
-		expect(addCardPage.deleteModalTitle.getText()).to.equal('Delete Card')
+		expect(addCardPage.deleteModalTitle.getText()).to.equal(
+			BoardPageStrings.deleteModalTitle
+		)
 		expect(addCardPage.deleteModalDescriptionText.getText()).to.equal(
-			'Are you sure you want to continue?'
+			BoardPageStrings.deleteModalDescriptionText
 		)
 	})
 	it('should delete card on clicking confirm button on modal', () => {

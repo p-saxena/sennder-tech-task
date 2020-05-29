@@ -1,3 +1,4 @@
+const errorShotDir = './tests/screenshots/'
 exports.config = {
 	//
 	// ====================
@@ -16,7 +17,7 @@ exports.config = {
 	// NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
 	// directory is where your package.json resides, so `wdio` will be called from there.
 	//
-	specs: ['./tests/specs/**/specs.js'],
+	specs: ['./tests/specs/specs.js'],
 	// Patterns to exclude.
 	exclude: [
 		// 'path/to/excluded/files'
@@ -212,9 +213,14 @@ exports.config = {
 	/**
 	 * Function to be executed after a test (in Mocha/Jasmine).
 	 */
-	// afterTest: function(test, context, { error, result, duration, passed, retries }) {
-	// },
-
+	afterTest: function (test) {
+		// get current test title and clean it, to use it as file name
+		let filename = encodeURIComponent(test.title.replace(/\s+/g, '-'))
+		// build file path
+		let filePath = `${errorShotDir}${filename}.png`
+		// save screenshot
+		browser.saveScreenshot(filePath)
+	},
 	/**
 	 * Hook that gets executed after the suite has ended
 	 * @param {Object} suite suite details
